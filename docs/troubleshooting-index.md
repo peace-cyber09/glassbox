@@ -32,7 +32,7 @@ wrong but not *which document* explains how to fix it.
 | Transaction not found | `transaction not found` after successful RPC connection | [Operator Runbook — Transaction not found](./operator-runbook.md#transaction-not-found) |
 | Rate limit exceeded | `rate limit exceeded` from RPC; multiple rapid requests fail | [Operator Runbook — Rate limiting](./operator-runbook.md#rate-limiting) |
 | Unauthorized / invalid auth token | `unauthorized` or `missing/invalid auth token` | [Operator Runbook — Authentication errors](./operator-runbook.md#authentication-errors) |
-| All RPC endpoints failed | `ALL_RPC_FAILED`; every endpoint in the failover pool is down | [Operator Runbook — RPC connection failures](./operator-runbook.md#rpc-connection-failures) |
+| All RPC endpoints failed | `ALL_RPC_FAILED`; every endpoint in the failover pool is down | [Operator Runbook — RPC failover recovery](./operator-runbook.md#rpc-failover-recovery) |
 
 ---
 
@@ -55,7 +55,8 @@ wrong but not *which document* explains how to fix it.
 | Symptom | What you might see | See |
 |---|---|---|
 | Session integrity failure | `Session integrity check FAILED` on `session resume`; checkpoint validation errors after a crash | [Operator Runbook — Session integrity failures](./operator-runbook.md#session-integrity-failures) |
-| Crash recovery | Session left in partially saved state after crash/SIGKILL/power loss | [Debug command — Session Recovery and Integrity](./debug-command.md#session-recovery-and-integrity) |
+| Crash recovery | Session left in partially saved state after crash/SIGKILL/power loss | [Session Recovery Decision](./session-recovery-decision.md) |
+| Session recovery decision | Which command to run for a given session symptom (read-only vs repair vs delete) | [Session Recovery Decision](./session-recovery-decision.md) |
 | Session write conflict | `SESSION_WRITE_CONFLICT`; concurrent writer saved a newer revision | [Session Locking](./session-locking.md#optimistic-revision-check) |
 | Advisory lock held | `SESSION_LOCK_HELD`; lock file held by a live process | [Session Locking](./session-locking.md#advisory-lock-lifecycle) |
 | Stale lock after crash | Lock file remains after owning process died | [Session Locking — Stale-lock cleanup](./session-locking.md#stale-lock-cleanup) |
@@ -135,5 +136,7 @@ on `error.code` in the JSON envelope (see
 - [Audit signing](./audit-signing.md) — software and PKCS#11 HSM signing
 - [Watch mode](./WATCH_MODE.md) — `--watch` and `--watch-files` symptoms
 - [Session locking](./session-locking.md) — concurrency and revision handling
+- [Session recovery decision](./session-recovery-decision.md) — symptom-to-command decision guide
+- [Session doctor examples](./session-doctor-examples.md) — doctor output samples
 - [Stable error codes](./stable-error-codes.md) — error code catalogue
 - [Exit codes](./exit-codes.md) — exit-code registry
